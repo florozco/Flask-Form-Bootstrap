@@ -1,4 +1,3 @@
-from fastai.vision import *
 from fastai.vision.all import *
 from flask import Flask, jsonify, request
 from PIL import Image
