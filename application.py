@@ -1,7 +1,11 @@
+import albumentations as A
+import torch
+
 from fastai.vision.all import *
 from flask import Flask, jsonify, request
 from PIL import Image
-import albumentations as A
+
+
 
 application=Flask(__name__)
 learn = load_learner('trained_model-4.pkl')
