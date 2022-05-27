@@ -7,7 +7,7 @@ from PIL import Image
 
 
 
-application=Flask(__name__)
+app=Flask(__name__)
 learn = load_learner('trained_model-4.pkl')
 
 def transform_image(image_bytes):
@@ -27,17 +27,17 @@ def get_prediction(image_bytes):
     tensor = transform_image(image_bytes=image_bytes)
     return learn.predict(tensor)
 
-@application.route('/',methods=['GET'])
+@app.route('/',methods=['GET'])
 def hello():
     hi='Hello worlds!'
     return  jsonify({ 'class_name': hi})
 
-@application.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         file = request.files['file']        
         return get_prediction(file)[0]
 
 if __name__ == "__main__":
-    application.debug = True
-    application.run()
+    app.debug = True
+    app.run()
