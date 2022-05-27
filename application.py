@@ -1,5 +1,3 @@
-from fastai import *
-from fastai.test_utils import *
 from fastai.vision import *
 from fastai.vision.all import *
 from flask import Flask, jsonify, request
