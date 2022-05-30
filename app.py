@@ -26,21 +26,10 @@ def get_prediction(image_bytes):
     tensor = transform_image(image_bytes=image_bytes)
     return learn.predict(tensor)
 
-#@app.route('/',methods=['GET'])
-#def hello():
-#    hi='Hello worlds!'
-#    return  jsonify({ 'class_name': hi})
-
-@app.route("/", methods=["GET"])
-def get_example():
-    """GET in server"""
-    response = jsonify(message="Simple server is running")
-    return response
-
-@app.route("/", methods=["POST"])
-def post_example():
-    """POST in server"""
-    return jsonify(message="POST request returned")
+@app.route('/',methods=['GET'])
+def hello():
+    hi='Hello worlds!'
+    return  jsonify({ 'class_name': hi})
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -49,5 +38,4 @@ def predict():
         return get_prediction(file)[0]
 
 if __name__ == "__main__":
-#    app.run(host= '0.0.0.0')
-    app.run(host="0.0.0.0", port="5000", debug=True)
+    app.run(host= '0.0.0.0')
